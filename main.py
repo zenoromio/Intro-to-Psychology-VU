@@ -104,17 +104,60 @@ def calculate_passed_failed(grades: Dict[str, List[float]]) -> str:
 
     return message
 
+def calculate_highest_combined_grade(grades: Dict[str, List[float]]) -> float:
+    """This function calculates the highest grade
+    :param: grades: dictonary with grades
+    :return: highest grade
+    """
+    
+    highest_grade: float = 0.0
+    
+    for grade_list in grades.values():
+        if grade_list[2] > highest_grade:
+            highest_grade = grade_list[2]
 
-#EXAMPLES
+    return highest_grade
 
-#print mean of quizzes
-print(calculate_quizzes_mean(grades_dict))
+def calculate_lowest_combined_grade(grades: Dict[str, List[float]]) -> float:
+    """This function calculates the lowest grade
+    :param: grades: dictonary with grades
+    :return: lowest grade
+    """
+    
+    lowest_grade: float = 10
+    
+    for grade_list in grades.values():
+        if grade_list[2] < lowest_grade:
+            lowest_grade = grade_list[2]
 
-#print passed and failed
-print(calculate_passed_failed(grades_dict))
+    return lowest_grade
+
+def calculate_median_combined_grade(grades: Dict[str, List[float]]) -> float:
+    """This function calculates the median of combined grade
+    :param: grades: dictonary with grades
+    :return: median of combined grade
+    """
+    
+    grades_list: List[float] = []
+
+    for grade_list in grades.values():
+        grades_list.append(grade_list[2])
+    
+    grades_list.sort()
+
+    if len(grades_list) % 2 == 0:
+        return grades_list[(len(grades_list) / 2)]
+    else:
+        num_up = (len(grades_list) + 1) / 2
+        num_down = (len(grades_list) - 1) / 2
+        median = (grades_list[int(num_down)] + grades_list[int(num_up)]) / 2
+
+        return median
 
 
 
+#EXAMPLES (print median grade)
+print(calculate_median_combined_grade(grades_dict))
 
 
 #code used to replace "," with "."
