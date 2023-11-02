@@ -6,3 +6,5 @@ This project calculate statistics from the psychology exam text file
 - Mean of quizzes grade
 - Mean of combined grade
 - Number of students passing and failing
+
+## File with grades deleted due to privacy issues
